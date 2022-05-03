@@ -1,0 +1,34 @@
+<html>
+<head>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container">
+            <a hef="#" class="navbar-brand">Students Application</a>
+            
+        </div>
+    </nav>
+    <div class="container">
+    <div class="mb-1">
+        <h2>Delete user [{{person.first_name}} {{person.last_name}}] Information </h2>
+         </div>
+        <div class="mb-1">
+           <p>Are you sure you want to delete</p> 
+          </div>
+          <form method="post" class="row g-3" action="/students_delete/{{person.id}}/">
+            {% csrf_token %}
+            <div class="mb-3">
+                <input type="submit" class="btn btn-danger btn-sm" value="Yes">
+                <a class="btn btn-primary btn-sm" href="/students/" role="button">No</a>
+            </div>
+          </form>
+        </div>
+             
+    <script src="/static/js/bootstrap.bundle.min.js">
+       
+    </script>
+</body>
+</html>

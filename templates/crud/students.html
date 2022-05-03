@@ -1,0 +1,68 @@
+<html>
+<head>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container">
+            <a hef="#" class="navbar-brand">Students Application</a>
+        </div>
+    </nav>
+    <div class="container">
+    <div class="container pt-5">
+        <div class="mb-1">
+            <h2>Create user Information</h2>
+             </div>
+
+
+        <form method="post" class="row g-3" action="/students/">
+          <!---
+          {% csrf_token %} This is used to 
+          -->
+       {% csrf_token %}
+      
+        <div class="col-md-6">
+          <label for="firstname" class="form-label">FirstName</label>
+          <input type="firstname" class="form-control" name="fname" id="firstname" required>
+        </div>
+        <div class="col-md-6"> 
+          <label for="lastname" class="form-label">LastName</label>
+          <input type="lastname" class="form-control" name="lname" id="lastname" required>
+        </div>
+        <div class="mb-3">
+          <input type="submit" class="btn btn-success" value="Add Student">
+        </div>
+       
+        </form>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">Edit/Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for person in persons %}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>{{person.first_name}}</td>
+                  <td>{{person.last_name}}</td>
+                  <td>
+                    <a class="btn btn-primary btn-sm" href="/students_edit/{{person.id}}" role="button">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/students_delete/{{person.id}}" role="button">Delete</a>
+                  </td>
+                </tr>
+              {% endfor %}
+          </table>
+        </div>
+    </div>
+    <script src="/static/js/bootstrap.bundle.min.js">
+       
+    </script>
+    </div>
+</body>
+</html>
